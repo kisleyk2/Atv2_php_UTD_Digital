@@ -1,0 +1,137 @@
+* {
+    margin: 0;
+}
+
+header {
+    background-color: rgb(178, 169, 140);
+    height: 40vh;
+    width: 70vw;
+    border-radius: 15px;
+    margin: auto;
+}
+
+nav {
+    height: 5vh;
+    width: 48.4vw;
+    margin-left: 36vw;
+    border-radius: 15px;
+    margin-top: 2VH;
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu {
+    width: 8vw;
+}
+
+article {
+    
+}
+
+.telaLogin {
+    height: 40vh;
+    width: 20vw;
+    background-color: rgb(178, 169, 140);
+    margin-left: 14.5vw;
+    border-radius: 15px;
+    margin-top: 2vh;
+    padding: 0.1px;
+}
+
+.login {
+    background: no-repeat center/100% url(../images/bg_tec.png);
+    height: 8vh;
+    text-align: center;
+    color: white;
+    margin-top: -0.5vh;
+    padding: 2vh;
+}
+
+.telaTecno {
+    height: 60vh;
+    width: 20vw;
+    background-color: rgb(178, 169, 140);
+    margin-left: 15VW;
+    border-radius: 15px;
+    margin-left: 14.5vw;
+    padding: 0.1px;
+    margin-top: 2vh;
+}
+
+.tecno {
+    background: no-repeat center/100% url(../images/bg_tec.png);
+    height: 8vh;
+    text-align: center;
+    color: white;
+    margin-top: -0.5vh;
+    padding: 2vh;
+}
+
+.telaParc {
+    height: 40vh;
+    width: 20vw;
+    background-color: rgb(178, 169, 140);
+    margin-left: 15VW;
+    border-radius: 15px;
+    margin-left: 14.5vw;
+    padding: 0.1px;
+    margin-top: 2vh;
+}
+
+.parc {
+    background: no-repeat center/100% url(../images/bg_tec.png);
+    height: 8vh;
+    text-align: center;
+    color: white;
+    margin-top: -0.5vh;
+    padding: 2vh;
+}
+
+.telaRedSoc {
+    height: 40vh;
+    width: 20vw;
+    background-color: rgb(178, 169, 140);
+    margin-left: 15VW;
+    border-radius: 15px;
+    margin-left: 14.5vw;
+    padding: 0.1px;
+    margin-top: 2vh;
+}
+
+.redSoc {
+    background: no-repeat center/100% url(../images/bg_tec.png);
+    height: 8vh;
+    text-align: center;
+    color: white;
+    margin-top: -0.5vh;
+    padding: 2vh;
+}
+
+main {
+    background-color: rgb(178, 169, 140);
+    position: absolute;
+    height: 179vh;
+    width: 48.5vw;
+    border-radius: 15px;
+    margin-left: 36vw;
+    margin-top: -179vh;
+    display: flex;
+    justify-content: center;
+    padding: 2px;
+}
+
+.lista {
+    margin-top: 10vh;
+    height: 50vh;
+    width: 97%;
+}
+
+footer {
+    background-color: rgb(178, 169, 140);
+    height: 40vh;
+    width: 70vw;
+    border-radius: 15px;
+    margin: auto;
+    margin-top: 2vh;
+}
