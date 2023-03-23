@@ -24,9 +24,7 @@
 
         <!-- Área de Menus -->
         <nav class="menus">
-            <a href="areaUser.php"><button class="btn btn-success menu">Início</button></a> 
-            <a href="fornecedores.php"><button class="btn btn-success menu">Fornecedores</button></a> 
-            <a href="produtos.php"><button class="btn btn-success menu">Produto</button></a>
+            <a href="areaUser.php"><button class="btn btn-success menu">Início</button></a>
             <div class="input-group" style="width: 8vw; height:5vh;">
                 <select name="conta" class="btn form-select bg-success text-light menu" aria-label="Default select example"  id="link" required>
                     <option selected>Cadastro</option>
@@ -45,14 +43,46 @@
             </div>
         </nav>
 
-        <!-- Área de Login/Usuário -->
         <article class="telaLogin" style="margin-top: 11vh; width: 70vw;">        
-            <div class="login bg-success" style="background: no-repeat">
-                <!-- Área de Login -->
-                <?php
-                    if (isset($_SESSION['logado'])) {
-                        
-                ?>
+            <!-- Área de Login -->
+            <?php
+                if (!isset($_SESSION['logado'])) {
+            ?>
+                    <!-- Área de Login -->
+                    <div class="login"> 
+                        <div class="text-center text-white">
+                            Login
+                        </div>
+                        <div class="text-center mt-5">
+                            <form action="valida.php" method="POST">
+                                <div class="mt-4">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text bg-success" id="basic-addon1">
+                                            <span class="iconify" data-icon="mdi:clipboard-user" style="color:white"></span>
+                                        </span>
+                                        <input name="login" type="text" class="form-control" placeholder="Usuário" aria-label="Username" aria-describedby="basic-addon1" style="background-color: transparent;">
+                                    </div>
+                                </div>
+                                <div class="">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text bg-success" id="basic-addon1" style="color:white">
+                                            <span class="iconify" data-icon="mdi:password"></span>
+                                        </span>
+                                        <input name="senha" type="password" class="form-control" placeholder="Senha" aria-label="Username" aria-describedby="basic-addon1" style="background-color: transparent;">
+                                    </div>
+                                </div>
+                                <div class="">
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-success form-control">Acesso</button>
+                                    </div>                        
+                                </div>
+                            </form>
+                        </div>             
+                    </login>                       
+            <?php
+                } else {
+            ?>      
+                    <div class="login">
                         <!-- Área de Usuário -->
 
                         <div class="text-center text-white p-1">
@@ -67,15 +97,17 @@
                                     <img class="imgLogin" src="images/user_woman.png" style="height: 25vh" />
                             <?php } ?>
                         </div>
-                        
+
                         <div class="text-white p-1 text-center">
-                            <div class="bg-success rounded-3" style="width: 50%; margin: auto; margin-top: -2vh">
+                            <div class="bg-success rounded-3"  style="margin-top: -2vh">
                                 <?=$_SESSION['conta']?>
                                 <a class="btn btn-danger" style="width: 80px;" href="sair.php">Sair</a>
                             </div>
                         </div>
-                    <?php } ?>
-            </div>
+                    </div>
+            <?php
+                }
+            ?>
         </article>
 
         <!-- Área Principal -->
@@ -83,8 +115,8 @@
             <div class="lista">
                 <div class="card p-2">
                     <table class="table table-bordered mb-2" id="myTable">
-                        <thead class="text-center bg-warning text-white">
-                            <th colspan=6>Lista de Fornecedores</th>
+                        <thead class="text-center text-white" style="background-color: #994d4d">
+                            <th colspan=6>Lista de Produtos</th>
                         </thead>    
                         <thead class="text-center bg-success text-white">
                             <th> Código </th>

@@ -19,10 +19,8 @@
         <!-- Área de Menus -->
         <nav>
             <a href="areaUser.php"><button class="btn btn-success menu">Início</button></a> 
-            <a href="fornecedores.php"><button class="btn btn-success menu">Fornecedores</button></a> 
-            <a href="produtos.php"><button class="btn btn-success menu">Produto</button></a>
-            <div class="input-group" style="width: 8vw; height:5vh;">
-                <select name="conta" class="btn form-select bg-success text-light menu" aria-label="Default select example"  id="link" required>
+            <div class="input-group" style="width: 9vw">
+                <select name="conta" class="btn form-select bg-success text-light"   id="link">
                     <option selected>Cadastro</option>
                     <option value="cadastro.php">Usuário</button></option>
                 </select>
@@ -40,14 +38,14 @@
                             <span class="input-group-text bg-success" id="basic-addon1">
                                 <span class="iconify" data-icon="mdi:clipboard-user" style="color:white"></span>
                             </span>
-                            <input name="login" type="text" class="form-control" placeholder="Usuário" aria-label="Username" aria-describedby="basic-addon1" style="background-color: transparent;" required>
+                            <input name="login" type="text" class="form-control" placeholder="Usuário" aria-label="Username" aria-describedby="basic-addon1" style="background-color: transparent;">
                         </div>                       
                         
                         <div class="input-group mb-3">
                             <span class="input-group-text bg-success" id="basic-addon1" style="color:white">
                                 <span class="iconify" data-icon="mdi:password"></span>
                             </span>
-                            <input name="senha" type="password" class="form-control" placeholder="Senha" aria-label="Username" aria-describedby="basic-addon1" style="background-color: transparent;" required>
+                            <input name="senha" type="password" class="form-control" placeholder="Senha" aria-label="Username" aria-describedby="basic-addon1" style="background-color: transparent;">
                         </div>                        
                         
                         <div class="text-center">

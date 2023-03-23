@@ -19,9 +19,7 @@
 
         <!-- Área de Menus -->
         <nav>
-            <a href="areaUser.php"><button class="btn btn-success menu">Início</button></a> 
-            <a href="fornecedores.php"><button class="btn btn-success menu">Fornecedores</button></a> 
-            <a href="produtos.php"><button class="btn btn-success menu">Produto</button></a>
+            <a href="areaUser.php"><button class="btn btn-success menu">Início</button></a>
             <div class="input-group" style="width: 8vw; height:5vh;">
                 <select name="conta" class="btn form-select bg-success text-light menu" aria-label="Default select example"  id="link" required>
                     <option selected>Cadastro</option>
@@ -168,6 +166,11 @@
 
         <!-- Área de Rodapé -->
         <footer></footer>
+
+        <!-- Button Oculto -->
+        <?php
+            include_once 'criarButton.php';
+        ?>
     
 		<script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
 

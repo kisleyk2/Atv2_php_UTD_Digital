@@ -24,11 +24,9 @@
 
         <!-- Área de Menus -->
         <nav class="menus">
-            <a href="areaUser.php"><button class="btn btn-success menu">Início</button></a> 
-            <a href="fornecedores.php"><button class="btn btn-success menu">Fornecedores</button></a> 
-            <a href="produtos.php"><button class="btn btn-success menu">Produto</button></a>
-            <div class="input-group" style="width: 8vw; height:5vh;">
-                <select name="conta" class="btn form-select bg-success text-light menu" aria-label="Default select example"  id="link" required>
+            <a href="areaUser.php"><button class="btn btn-success menu">Início</button></a>
+            <div class="input-group" style="width: 9vw; margin-right: 1vw;">
+                <select name="conta" class="btn form-select bg-success text-light"   id="link">
                     <option selected>Cadastro</option>
                     <option value="cadastro.php">Usuário</button></option>
                     <?php
@@ -47,12 +45,45 @@
 
         <!-- Área de Login/Usuário -->
         <article class="telaLogin" style="margin-top: 11vh; width: 70vw;">        
-            <div class="login bg-success" style="background: no-repeat">
-                <!-- Área de Login -->
-                <?php
-                    if (isset($_SESSION['logado'])) {
-                        
-                ?>
+            <!-- Área de Login -->
+            <?php
+                if (!isset($_SESSION['logado'])) {
+            ?>
+                    <!-- Área de Login -->
+                    <div class="login"> 
+                        <div class="text-center text-white">
+                            Login
+                        </div>
+                        <div class="text-center mt-5">
+                            <form action="valida.php" method="POST">
+                                <div class="mt-4">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text bg-success" id="basic-addon1">
+                                            <span class="iconify" data-icon="mdi:clipboard-user" style="color:white"></span>
+                                        </span>
+                                        <input name="login" type="text" class="form-control" placeholder="Usuário" aria-label="Username" aria-describedby="basic-addon1" style="background-color: transparent;">
+                                    </div>
+                                </div>
+                                <div class="">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text bg-success" id="basic-addon1" style="color:white">
+                                            <span class="iconify" data-icon="mdi:password"></span>
+                                        </span>
+                                        <input name="senha" type="password" class="form-control" placeholder="Senha" aria-label="Username" aria-describedby="basic-addon1" style="background-color: transparent;">
+                                    </div>
+                                </div>
+                                <div class="">
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-success form-control">Acesso</button>
+                                    </div>                        
+                                </div>
+                            </form>
+                        </div>             
+                    </login>                       
+            <?php
+                } else {
+            ?>      
+                    <div class="login">
                         <!-- Área de Usuário -->
 
                         <div class="text-center text-white p-1">
@@ -67,95 +98,101 @@
                                     <img class="imgLogin" src="images/user_woman.png" style="height: 25vh" />
                             <?php } ?>
                         </div>
-                        
+
                         <div class="text-white p-1 text-center">
-                            <div class="bg-success rounded-3" style="width: 50%; margin: auto; margin-top: -2vh">
+                            <div class="bg-success rounded-3"  style="margin-top: -2vh">
                                 <?=$_SESSION['conta']?>
                                 <a class="btn btn-danger" style="width: 80px;" href="sair.php">Sair</a>
                             </div>
                         </div>
-                    <?php } ?>
-            </div>
+                    </div>
+            <?php
+                }
+            ?>
         </article>
 
         <!-- Área Principal -->
         <main style="margin-top: 1vh; margin-left: 14.5vw; width: 70vw; height: auto; background-color: transparent;">
-            <div class="lista">
-                <div class="card p-2">
-                    <table class="table table-bordered mb-2" id="myTable">
-                        <thead class="text-center bg-success text-white">
-                            <th> Nome Completo </th>
-                            <th> CPF </th>
-                            <th> Data do Nascimento </th>
-                            <th> Email </th>
-                            <th> Endereço </th>
-                            <th> Tipo de Conta </th>
-                            <th> Ações </th>
-                        </thead>
-                        <tbody>
-                            
-                            <?php foreach($dados as $chave=>$string): ?>
-                                <?php 
-                                    $linha = explode(" - ", $string);
-                                    unset($linha[3]); # excluindo dados de senha
-                                    unset($linha[6]); # excluindo dados de login
-                                    unset($linha[7]); # excluindo dados de senha
-                                ?>
-                                <tr class="text-center">
-                                    <?php foreach ($linha as $dado): ?>
-                                        <td><?=$dado;?></td>		
-                                    <?php endforeach; ?>
+            <?php
+                if (isset($_SESSION['logado'])) {
+            ?>
+                    <div class="lista">
+                        <div class="card p-2">
+                            <table class="table table-bordered mb-2" id="myTable">
+                                <thead class="text-center text-white" style="background-color: #994d4d">
+                                    <th colspan=7>Lista de Usuários</th>
+                                </thead> 
+                                <thead class="text-center bg-success text-white">
+                                    <th> Nome Completo </th>
+                                    <th> CPF </th>
+                                    <th> Data do Nascimento </th>
+                                    <th> Email </th>
+                                    <th> Endereço </th>
+                                    <th> Tipo de Conta </th>
+                                    <th> Ações </th>
+                                </thead>
+                                <tbody>
+                                    
+                                    <?php foreach($dados as $chave=>$string): ?>
+                                        <?php 
+                                            $linha = explode(" - ", $string);
+                                            unset($linha[3]); # excluindo dados de senha
+                                            unset($linha[6]); # excluindo dados de login
+                                            unset($linha[7]); # excluindo dados de senha
+                                        ?>
+                                        <tr class="text-center">
+                                            <?php foreach ($linha as $dado): ?>
+                                                <td><?=$dado;?></td>		
+                                            <?php endforeach; ?>
 
-                                    <td style="width: 150px">
-                                        <button class="btn btn-danger btn-xs" data-bs-toggle="modal" data-bs-target="#deletar<?=$chave;?>"> 
-                                            <span class="iconify" data-icon="mdi:trash-can-empty" data-width="20" data-height="20"></span>
-                                        </button>
+                                            <td style="width: 150px">
+                                                <button class="btn btn-danger btn-xs" data-bs-toggle="modal" data-bs-target="#deletar<?=$chave;?>"> 
+                                                    <span class="iconify" data-icon="mdi:trash-can-empty" data-width="20" data-height="20"></span>
+                                                </button>
 
-                                        <button class="btn btn-warning btn-xs">
-                                            <span class="iconify" data-icon="mdi:lead-pencil" data-width="20" data-height="20"></span>
-                                        </button>
+                                                <button class="btn btn-warning btn-xs">
+                                                    <span class="iconify" data-icon="mdi:lead-pencil" data-width="20" data-height="20"></span>
+                                                </button>
 
-                                        <!-- Modal -->
-                                        <div class="modal fade" id="deletar<?=$chave;?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Excluir Registro?</h1>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        Deseja excluir o cliente <strong><?=$linha[0];?></strong> esse registro? Essa alteração não pode ser desfeita!
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Não, Sair!</button>
-                                                        <a href="deletar.php?id=<?=$chave;?>&arquivo=cadastros.txt&pos=1" type="button" class="btn btn-success">Sim, pode continuar !</a>
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="deletar<?=$chave;?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Excluir Registro?</h1>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                Deseja excluir o cliente <strong><?=$linha[0];?></strong> esse registro? Essa alteração não pode ser desfeita!
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Não, Sair!</button>
+                                                                <a href="deletar.php?id=<?=$chave;?>&arquivo=cadastros.txt&pos=1" type="button" class="btn btn-success">Sim, pode continuar !</a>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </td>
+                                            </td>
 
-                                </tr>
-                            <?php endforeach; ?>                        
-                        </tbody>
-                        <tfoot class="text-center text-white" style="background-color: #487aa1">
-                            <th> Nome Completo </th>
-                            <th> CPF </th>
-                            <th> Data do Nascimento </th>
-                            <th> Email </th>
-                            <th> Endereço </th>
-                            <th> Tipo de Conta </th>
-                            <th> Ações </th>
-                        </tfoot>
-                    </table>
-                </div>                
-            </div>
+                                        </tr>
+                                    <?php endforeach; ?>                        
+                                </tbody>
+                                <tfoot class="text-center text-white" style="background-color: #487aa1">
+                                    <th> Nome Completo </th>
+                                    <th> CPF </th>
+                                    <th> Data do Nascimento </th>
+                                    <th> Email </th>
+                                    <th> Endereço </th>
+                                    <th> Tipo de Conta </th>
+                                    <th> Ações </th>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+            <?php
+                }
+            ?> 
         </main>
-        
-        <!-- Button Oculto -->
-        <?php
-            include_once 'criarButton.php';
-        ?>
     
         <!-- Jquery -->
         <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -215,5 +252,10 @@
                 });
             });
         </script>
+
+        <!-- Button Oculto -->
+        <?php
+            include_once 'criarButton.php';
+        ?>
     </body>
 </html>

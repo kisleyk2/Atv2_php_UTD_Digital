@@ -21,7 +21,7 @@
         fclose($arquivo);
 
         # Redirecionando para alguma página
-        header("location: index.php");
+        header("location: areaUser.php");
 
     } elseif ($_POST['cad'] == "fornecedor") {
         unset($dados['cad']);
@@ -34,8 +34,8 @@
         fclose($arquivo);
 
         # Redirecionando para alguma página
-
         header("location: fornecedores.php");
+        
     } elseif ($_POST['cad'] == "produto") {
         unset($dados['cad']);
         # Convertendo os dados em string
@@ -47,7 +47,6 @@
         fclose($arquivo);
 
         # Redirecionando para alguma página
-
         header("location: produtos.php");
     }
 ?>
